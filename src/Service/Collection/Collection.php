@@ -9,7 +9,6 @@ class Collection
     public function add(Item $item): void
     {
         $this->items[] = $item;
-        //TODO: possible changes based on duplicate id of item
     }
 
     public function remove(int $itemId): bool
