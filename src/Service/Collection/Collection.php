@@ -15,12 +15,13 @@ class Collection
     {
         foreach ($this->items as $key => $item) {
             if ($item->getId() === $itemId) {
+                // Item found and removed
                 unset($this->items[$key]);
-                return true; // Item found and removed
+                return true; 
             }
         }
-
-        return false; // Item not found
+        // Item not found
+        return false; 
     }
 
     public function list(?string $unit = null): array
