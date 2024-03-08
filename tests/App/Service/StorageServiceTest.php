@@ -74,9 +74,9 @@ class StorageServiceTest extends TestCase
         $this->assertEquals([], $storageService->getVegetablesCollection()->list());
     }
 
-    public function testProcessRequestWithActualFile(): void
+    public function testProcessRequestWithCurrentFile(): void
     {
-        // Read the content of the actual request.json file
+        // Read content of the current request.json file
         $requestJson = file_get_contents('request.json');
 
         // Mock dependencies
