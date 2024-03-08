@@ -15,7 +15,7 @@ class StorageService
     {
         $data = json_decode($request, true);
         if (!is_array($data)) {
-            // Handle JSON decoding error if needed
+            // Handling JSON decoding error if needed
             return;
         }
         foreach ($data as $itemData) {
