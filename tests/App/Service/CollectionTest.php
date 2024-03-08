@@ -12,7 +12,7 @@ class CollectionTest extends TestCase
     {
         $collection = new Collection();
 
-        $item = new Item(1, 'Test Item', 100, 'g');
+        $item = new Item(1, 'Test Item', 200, 'g');
         $collection->add($item);
 
         $itemList = $collection->list();
@@ -26,7 +26,7 @@ class CollectionTest extends TestCase
     {
         $collection = new Collection();
 
-        $item = new Item(1, 'Test Item', 100, 'g');
+        $item = new Item(1, 'Test Item', 150, 'g');
         $collection->add($item);
 
         $this->assertCount(1, $collection->list());
@@ -49,8 +49,8 @@ class CollectionTest extends TestCase
     {
         $collection = new Collection();
 
-        $item1 = new Item(1, 'Item 1', 500, 'g');
-        $item2 = new Item(2, 'Item 2', 1500, 'g');
+        $item1 = new Item(1, 'Item 1', 300, 'g');
+        $item2 = new Item(2, 'Item 2', 2000, 'g');
 
         $collection->add($item1);
         $collection->add($item2);
@@ -66,7 +66,7 @@ class CollectionTest extends TestCase
     {
         $collection = new Collection();
 
-        $item = new Item(1, 'Test Item', 100, 'g');
+        $item = new Item(1, 'Test Item', 500, 'g');
         $collection->add($item);
 
         $result = $collection->search('Test Item');
