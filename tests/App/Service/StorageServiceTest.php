@@ -24,7 +24,7 @@ class StorageServiceTest extends TestCase
 
     public function testProcessRequestWithFruits(): void
     {
-        $requestJson = '[{"id":2,"name":"Apples","type":"fruit","quantity":20,"unit":"kg"}]';
+        $requestJson = '[{"id":1,"name":"Oranges","type":"fruit","quantity":10,"unit":"kg"}]';
 
         $fruitCollectionMock = $this->createMock(FruitsCollection::class);
         $vegetableCollectionMock = $this->createMock(VegetablesCollection::class);
@@ -40,7 +40,7 @@ class StorageServiceTest extends TestCase
 
     public function testProcessRequestWithVegetables(): void
     {
-        $requestJson = '[{"id":1,"name":"Carrot","type":"vegetable","quantity":10922,"unit":"g"}]';
+        $requestJson = '[{"id":2,"name":"Lettuce","type":"vegetable","quantity":170,"unit":"g"}]';
 
         $fruitCollectionMock = $this->createMock(FruitsCollection::class);
         $vegetableCollectionMock = $this->createMock(VegetablesCollection::class);
@@ -56,7 +56,7 @@ class StorageServiceTest extends TestCase
 
     public function testProcessRequestWithKilogramsConversion(): void
     {
-        $requestJson = '[{"id":3,"name":"Bananas","type":"fruit","quantity":2,"unit":"kg"}]';
+        $requestJson = '[{"id":3,"name":"Apples","type":"fruit","quantity":4,"unit":"kg"}]';
 
         $fruitCollectionMock = new FruitsCollection();
         $vegetableCollectionMock = new VegetablesCollection();
@@ -79,22 +79,25 @@ class StorageServiceTest extends TestCase
         // Read the content of the actual request.json file
         $requestJson = file_get_contents('request.json');
 
-        // Mock your dependencies
-        $fruitCollectionMock = new FruitsCollection();
+        // Mock dependencies
         $vegetableCollectionMock = new VegetablesCollection();
+        $fruitCollectionMock = new FruitsCollection();
+       
 
         // Create an instance of StorageService
         $storageService = new StorageService($fruitCollectionMock, $vegetableCollectionMock);
 
-        // Call the method to be tested
+        // Call the method to test
         $storageService->processRequest($requestJson);
 
         // Assertions to check if the items are added correctly
-        $fruitsCollection = $storageService->getFruitsCollection()->list();
         $vegetablesCollection = $storageService->getVegetablesCollection()->list();
+        $fruitsCollection = $storageService->getFruitsCollection()->list();
+       
 
         // Assert that each collection has a count greater than 1
-        $this->assertGreaterThan(1, count($fruitsCollection), 'Fruits collection should have a count greater than 1');
         $this->assertGreaterThan(1, count($vegetablesCollection), 'Vegetables collection should have a count greater than 1');
+        $this->assertGreaterThan(1, count($fruitsCollection), 'Fruits collection should have a count greater than 1');
+        
     }
 }
